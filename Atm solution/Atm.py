@@ -1,6 +1,12 @@
 def Atm (Request):
 
     Money = 500
+    if Request > Money:
+        return "There is not enough money"
+
+    if Request <= 0 :
+
+        return "You must withdraw more than zero"
 
     if Request < Money :
 
@@ -38,4 +44,4 @@ def Atm (Request):
     else:
         return "There is not enough money"
 
-print Atm(277)
+print Atm()
