@@ -1,47 +1,66 @@
-def Atm (Request):
+class ATM:
 
-    Money = 500
-    if Request > Money:
-        return "There is not enough money"
+    def __init__(self, balance, bank_name):
+        self.balance = balance
+        self.bank_name = bank_name
 
-    if Request <= 0 :
+    def withdraw(self, request):
 
-        return "You must withdraw more than zero"
+        print ("Welcom to " + self.bank_name)
 
-    if Request < Money :
 
-        while Request > 100:
+        print("Current balance = " + str(self.balance))
 
-            Request = Request - 100
+        print('==================================')
 
-            print "Give 100"
+        result = self.balance
 
-        while Request > 50:
 
-            Request = Request - 50
 
-            print "Give 50"
+        if request > self.balance:
+            print("Can't give you all this money !!")
 
-        while Request > 10:
+        elif request < 0:
+            print("More than zero plz!")
 
-            Request = Request - 10
+        else:
+            result = self.balance - request
 
-            print "Give 10"
+            while request > 0:
 
-        while Request > 5:
+                if request >= 100:
+                    request -= 100
+                    print("give 100")
 
-            Request = Request - 5
+                elif request >= 50:
+                    request -= 50
+                    print("give 50")
 
-            print "Give 5"
+                elif request >= 10:
+                    request -= 10
+                    print("give 10")
 
-        while Request > 1:
+                elif request >= 5:
+                    request -= 5
+                    print("give 5")
 
-            Request = Request - 1
+                elif request < 5:
+                    print("give " + str(request))
+                    request = 0
 
-            print "Give 1"
-        return "The receipt of the request"
+        self.balance -= request
+        return result
 
-    else:
-        return "There is not enough money"
 
-print Atm()
+
+balance1 = 500
+balance2 = 1000
+
+atm1 = ATM(balance1, "Smart Bank")
+atm2 = ATM(balance2, "Baraka Bank")
+
+atm1.withdraw(277)
+atm1.withdraw(800)
+
+atm2.withdraw(100)
+atm2.withdraw(2000)
