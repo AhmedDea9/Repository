@@ -24,29 +24,35 @@ class ATM:
             print("More than zero plz!")
 
         else:
-            self.withdrawals_list.append(request)
-            self.balance -= request
-            while request > 0:
 
-                if request >= 100:
-                    request -= 100
-                    print("give 100")
+            self.process_request(request)
 
-                elif request >= 50:
-                    request -= 50
-                    print("give 50")
+    def process_request(self, request):
 
-                elif request >= 10:
-                    request -= 10
-                    print("give 10")
+                self.withdrawals_list.append(request)
 
-                elif request >= 5:
-                    request -= 5
-                    print("give 5")
+                self.balance -= request
+                while request > 0:
 
-                elif request < 5:
-                    print("give " + str(request))
-                    request = 0
+                    if request >= 100:
+                        request -= 100
+                        print("give 100")
+
+                    elif request >= 50:
+                        request -= 50
+                        print("give 50")
+
+                    elif request >= 10:
+                        request -= 10
+                        print("give 10")
+
+                    elif request >= 5:
+                        request -= 5
+                        print("give 5")
+
+                    elif request < 5:
+                        print("give " + str(request))
+                        request = 0
 
     def show_withdrawals(self):
         print('==================================')
@@ -66,6 +72,8 @@ atm1.withdraw(800)
 
 atm2.withdraw(100)
 atm2.withdraw(2000)
+
+
 
 atm1.show_withdrawals()
 atm2.show_withdrawals()
